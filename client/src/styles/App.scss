@@ -8,11 +8,20 @@
   }
 }
 
+.parallaxHeader{
+  position: relative;
+  z-index: 1000;
+  top:150px;
+  text-align: center;
+  font-size: 70px;
+}
+
 .homeBanner {
-  background-color: grey; /*Add background image*/
   height: 467px;
   margin: auto 31px;
   font-size: 71px;
+  background-image: url("https://picsum.photos/id/668/1389/467");
+  padding-top: 150px;
 }
 
 .ticketTitle{
@@ -26,19 +35,32 @@
   margin-bottom: 61px;
 }
 
-.slick-arrow {
-//Disable default left arrow on react-slick
-  &.slick-prev {
-    left: 100px;
-  }
-//Disable default right arrow on react-slick
-  &.slick-next {
-      right:100px;
+.slick-slide{
+  transition: all .2s ease-in-out;
+  &:hover{
+    cursor: pointer;
+    transform:scale(1.1);
   }
 }
 
+.slick-arrow {
+//Disable default left arrow on react-slick
+  &.slick-prev {
+    left: 200px;
+  }
+//Disable default right arrow on react-slick
+  &.slick-next {
+    right:100px;
+  }
+}
+/*
 .slick-current {
   background-color: #d6b02e;
   font-weight: bold;
   color: black;
+}
+*/
+
+h2{
+    color:#2e2e2e;
 }

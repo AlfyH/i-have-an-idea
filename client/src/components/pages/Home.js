@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import '../../styles/App.scss';
 import Tickets from '../Tickets'
 import Slider from "react-slick";
+import { ParallaxBanner,ParallaxProvider} from 'react-scroll-parallax';
+import {Row} from 'reactstrap'
 
 class Home extends Component {
   constructor(props) {
@@ -28,19 +30,16 @@ componentDidMount(){
 }
 
 render(){
-
-  const dummyTicketsCount = [1,2,3,4,5];
-
   const carouselSettings = {
      className: "center",
      centerMode: true,
      infinite: true,
-     centerPadding: "60px",
+     centerPadding: "0px",
      slidesToShow: 3,
      speed: 500
    };
    const squareSettings = {
-     dots: true,
+     dots: false,
      infinite: true,
      speed: 500,
      slidesToShow: 4,
@@ -52,18 +51,38 @@ render(){
     });
 
   return (
+
     <div className="App">
-      <div className="homeBanner"> Join our Slack Channel #Ihaveanidea</div>
-      <header>Editor's Pick</header>
+      <ParallaxProvider>
+<Row className="mx-4 mt-5">
+    <ParallaxBanner
+    className="parallax"
+    layers={[
+        {
+            image: 'https://picsum.photos/id/653/1389/467',
+            amount: 0.1,
+        }
+    ]}
+    style={{
+        height: '400px',
+    }}
+><h2 className="parallaxHeader">Join our Slack channel #Ihaveanidea</h2>
+</ParallaxBanner>
+</Row>
+      </ParallaxProvider>
+
+
+      <h2 className="mt-4 ml-3">Editor's Pick</h2>
       <Slider {...carouselSettings}>
-        <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+        <div><img src="https://picsum.photos/id/676/654/365"/></div><div><img src="https://picsum.photos/id/677/654/365"/></div><div><img src="https://picsum.photos/id/678/654/365"/></div><div><img src="https://picsum.photos/id/672/654/365"/></div><div><img src="https://picsum.photos/id/672/654/365"/></div>
       </Slider>
-      <header>Top Favorites</header>
-      <Slider {...squareSettings}>
-      <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+      <h2 className="mt-4 ml-3">Top Favorites</h2>
+      <Slider {...squareSettings} className="mb-5">
+      <div><img src="https://picsum.photos/id/676/340/340"/></div><div><img src="https://picsum.photos/id/677/340/340"/></div><div><img src="https://picsum.photos/id/678/340/340"/></div><div><img src="https://picsum.photos/id/672/340/340"/></div><div><img src="https://picsum.photos/id/672/340/340"/></div>
       </Slider>
       {dummyTickets}
     </div>
+
   );
 }
 }

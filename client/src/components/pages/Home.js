@@ -5,10 +5,27 @@ import Slider from "react-slick";
 
 class Home extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+super(props);
+this.state = {
+  data: {},
+  entries: []
+};
+}
+
+componentDidMount(){
+  fetch('/entriesget', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  }).then(response => response.json())
+  .then(data => {
+    this.setState({
+      entries: data
+    });
+  });
+}
 
 render(){
 
@@ -30,8 +47,8 @@ render(){
      slidesToScroll: 3
     };
 
-    let dummyTickets = dummyTicketsCount.map((x,id) => {
-      return <Tickets key={id} />
+    let dummyTickets = this.state.entries.map((x,id) => {
+      return <Tickets entries = {x} key={id} />
     });
 
   return (

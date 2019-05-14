@@ -1,9 +1,21 @@
 const Entries = require('../models/entries');
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
+const cnnFeed = 'https://medium.com/feed/@Medium';
 
 
 exports.getFeed = (req, res) => {
-  res.send("hello from server");
-  console.log("hello");
+  const rawFile = new XMLHttpRequest();
+//retrieve and send RSS feed to front end
+  rawFile.onreadystatechange = () => {
+    if (rawFile.readyState === 4 && (rawFile.status === 200 || rawFile.status === 0)) {
+      res.send({
+        body: rawFile.responseText
+      });
+    }
+  };
+  rawFile.open('GET', cnnFeed, false);
+  rawFile.send();
 }
 
 exports.post = (req, res) => {

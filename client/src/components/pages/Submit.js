@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
+import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
 import FileUpload from '../FileUpload'
 
 class Submit extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state={
       title:'',
-      description:''
+      description:'',
+      type:''
     };
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false
+    };
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
   }
 
   titleIdea = (e) => {
@@ -21,6 +33,11 @@ class Submit extends Component {
         this.setState({description});
       }
 
+      ideaType = (e) => {
+            let type = e.target.value;
+            this.setState({type});
+            console.log(type);
+          }
 
   onSubmit = (title,description) => {
     const sendData = {
@@ -61,8 +78,15 @@ componentDidMount(){
         </header>
          <p>Title: <input onChange = {(e)=>this.titleIdea(e)} type="text" name="name" /></p>
          <p>Description: <input onChange = {(e)=>this.descriptionIdea(e)} type="text" name="name" /></p>
-         <p>Idea type: <input type="text" name="name" /></p>
-        <p><FileUpload /></p>
+         <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <DropdownToggle caret>
+          Idea Type
+        </DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem>test</DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+        <FileUpload />
         <p><button>Add Video</button></p>
         <p><button onClick ={(e)=>this.onSubmit(this.state.title,this.state.description)}>Submit Idea</button></p>
       </div>

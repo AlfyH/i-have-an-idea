@@ -36,7 +36,7 @@ class FileUpload extends React.Component {
   render() {
     return (
       <form onSubmit={this.onFormSubmit}>
-        <p>Upload an image</p>
+        Upload an image
         <input type="file" onChange={this.onChange} />
         <button type="submit">Upload</button>
       </form>

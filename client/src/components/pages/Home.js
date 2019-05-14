@@ -54,13 +54,13 @@ render(){
 
     <div className="App">
       <ParallaxProvider>
-<Row className="mx-4 mt-5">
+<Row className="mt-5">
     <ParallaxBanner
     className="parallax"
     layers={[
         {
             image: 'https://picsum.photos/id/653/1389/467',
-            amount: 0.1,
+            amount: 0.4
         }
     ]}
     style={{

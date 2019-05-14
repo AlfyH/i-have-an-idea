@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FileUpload from '../FileUpload'
 
 class Submit extends Component {
 
@@ -61,7 +62,7 @@ componentDidMount(){
          <p>Title: <input onChange = {(e)=>this.titleIdea(e)} type="text" name="name" /></p>
          <p>Description: <input onChange = {(e)=>this.descriptionIdea(e)} type="text" name="name" /></p>
          <p>Idea type: <input type="text" name="name" /></p>
-        <p> <button>Add Image</button></p>
+        <p><FileUpload /></p>
         <p><button>Add Video</button></p>
         <p><button onClick ={(e)=>this.onSubmit(this.state.title,this.state.description)}>Submit Idea</button></p>
       </div>

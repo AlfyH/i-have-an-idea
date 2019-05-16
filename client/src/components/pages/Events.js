@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class Events extends Component {
+  //this will go inside Community tab
 
   render() {
     return (

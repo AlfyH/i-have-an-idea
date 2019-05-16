@@ -27,28 +27,29 @@ class Header extends Component {
 
   render() {
     return (
-      <Navbar color="light" light expand="md">
+      <Navbar  color="light" light expand="md">
          <NavbarBrand href="/">Home</NavbarBrand>
          <NavbarToggler onClick={this.toggle} />
          <Collapse isOpen={this.state.isOpen} navbar>
-           <Nav className="ml-2" navbar>
+           <Nav className="mr-auto" navbar>
              <NavItem className="ml-2" >
                <NavLink href="/explore">Explore</NavLink>
-             </NavItem>
-             <NavItem className="ml-2">
-               <NavLink href="/submit">Submit</NavLink>
-             </NavItem>
-             <NavItem className="ml-2">
-               <NavLink href="/events">Events</NavLink>
              </NavItem>
              <NavItem className="ml-2">
                <NavLink href="/community">Community</NavLink>
              </NavItem>
              <NavItem className="ml-2">
+               <NavLink href="/submit">Submit</NavLink>
+             </NavItem>
+
+             </Nav>
+              <Nav className="ml-auto" navbar>
+             <NavItem className="ml-2">
                <NavLink href="/login">Login</NavLink>
              </NavItem>
              </Nav>
             </Collapse>
+
           </Navbar>
     );
   }

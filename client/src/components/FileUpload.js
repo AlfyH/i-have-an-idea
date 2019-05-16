@@ -1,5 +1,5 @@
 import React from 'react'
-import axios, { post } from 'axios';
+import { post } from 'axios';
 
 class FileUpload extends React.Component {
 
@@ -36,7 +36,6 @@ class FileUpload extends React.Component {
   render() {
     return (
       <form onSubmit={this.onFormSubmit}>
-        Upload an image
         <input type="file" onChange={this.onChange} />
         <button type="submit">Upload</button>
       </form>

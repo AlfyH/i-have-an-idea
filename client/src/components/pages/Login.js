@@ -29,7 +29,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="text-center mt-5">
       <p>Username: <input onChange = {(e)=>this.emailOn(e)} type="text" name="name" /></p>
       <p>Password: <input onChange = {(e)=>this.passwordOn(e)} type="text" name="name" /></p>
      <p><button onClick = {(e)=>this.login(e)}>Sign In</button>

@@ -3,7 +3,7 @@ import '../../styles/App.scss';
 import Tickets from '../Tickets'
 import Slider from "react-slick";
 import { ParallaxBanner,ParallaxProvider} from 'react-scroll-parallax';
-import {Row} from 'reactstrap'
+
 
 class Home extends Component {
   constructor(props) {
@@ -54,33 +54,32 @@ render(){
 
     <div className="App">
       <ParallaxProvider>
-<Row className="mt-5">
-    <ParallaxBanner
-    className="parallax"
-    layers={[
-        {
-            image: 'https://picsum.photos/id/653/1389/467',
-            amount: 0.4
-        }
-    ]}
-    style={{
-        height: '400px',
-    }}
-><h2 className="parallaxHeader">Join our Slack channel #Ihaveanidea</h2>
-</ParallaxBanner>
-</Row>
+          <ParallaxBanner
+          className="parallax"
+          layers={[
+            {
+              image: 'https://picsum.photos/id/653/1300/400',
+              amount: 0.4
+            }
+          ]}
+          style={{
+            height: '400px',
+          }}
+          >
+            <h2 className="parallaxHeader">Join our Slack channel #Ihaveanidea</h2>
+          </ParallaxBanner>
       </ParallaxProvider>
 
-
-      <h2 className="mt-4 ml-3">Editor's Pick</h2>
-      <Slider {...carouselSettings}>
-        <div><img src="https://picsum.photos/id/676/654/365"/></div><div><img src="https://picsum.photos/id/677/654/365"/></div><div><img src="https://picsum.photos/id/678/654/365"/></div><div><img src="https://picsum.photos/id/672/654/365"/></div><div><img src="https://picsum.photos/id/672/654/365"/></div>
-      </Slider>
       <h2 className="mt-4 ml-3">Top Favorites</h2>
       <Slider {...squareSettings} className="mb-5">
-      <div><img src="https://picsum.photos/id/676/340/340"/></div><div><img src="https://picsum.photos/id/677/340/340"/></div><div><img src="https://picsum.photos/id/678/340/340"/></div><div><img src="https://picsum.photos/id/672/340/340"/></div><div><img src="https://picsum.photos/id/672/340/340"/></div>
+        <div><img src="https://picsum.photos/id/676/340/340" alt="placeholder"/></div><div><img src="https://picsum.photos/id/677/340/340" alt="placeholder"/></div><div><img src="https://picsum.photos/id/678/340/340" alt="placeholder"/></div><div><img src="https://picsum.photos/id/672/340/340" alt="placeholder"/></div><div><img src="https://picsum.photos/id/672/340/340" alt="placeholder"/></div>
       </Slider>
       {dummyTickets}
+      <h2 className="mt-4 ml-3">Editor's Pick</h2>
+      <Slider {...carouselSettings} className="mb-5">
+        <div><img src="https://picsum.photos/id/676/654/365" alt="placeholder"/></div><div><img src="https://picsum.photos/id/677/654/365" alt="placeholder"/></div><div><img src="https://picsum.photos/id/678/654/365" alt="placeholder"/></div><div><img src="https://picsum.photos/id/672/654/365" alt="placeholder"/></div><div><img src="https://picsum.photos/id/672/654/365" alt="placeholder"/></div>
+      </Slider>
+      <p className="text-center">Website in progress by Anadillo Studios</p>
     </div>
 
   );

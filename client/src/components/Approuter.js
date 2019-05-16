@@ -9,6 +9,7 @@ import Submit from './pages/Submit'
 import Events from './pages/Events'
 import Community from './pages/Community'
 import Login from './pages/Login'
+import DetailPage from './pages/DetailPage'
 
 
 
@@ -22,6 +23,7 @@ const AppRouter = () => (
       <Route path = "/events" component = {Events}/>
       <Route path = "/community" component = {Community}/>
       <Route path='/login' component={Login}/>
+      <Route path='/detail' component={DetailPage}/>
     </div>
   </BrowserRouter>
 );

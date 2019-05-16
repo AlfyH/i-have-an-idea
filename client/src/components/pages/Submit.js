@@ -71,15 +71,14 @@ componentDidMount(){
 
   render() {
     return (
-      <div>
-
-        <header>
+      <div className="text-center">
+        <h1 className="mt-5 mb-3">
           Welcome to "I have an idea"
-        </header>
+        </h1>
          <p>Title: <input onChange = {(e)=>this.titleIdea(e)} type="text" name="name" /></p>
          <p>Description: <input onChange = {(e)=>this.descriptionIdea(e)} type="text" name="name" /></p>
          <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>
+        <DropdownToggle caret className="mb-5">
           Idea Type
         </DropdownToggle>
         <DropdownMenu>
@@ -87,8 +86,7 @@ componentDidMount(){
         </DropdownMenu>
       </Dropdown>
         <FileUpload />
-        <p><button>Add Video</button></p>
-        <p><button onClick ={(e)=>this.onSubmit(this.state.title,this.state.description)}>Submit Idea</button></p>
+        <p><button className="mt-5" onClick ={(e)=>this.onSubmit(this.state.title,this.state.description)}>Submit Idea</button></p>
       </div>
     );
   }

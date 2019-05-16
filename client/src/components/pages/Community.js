@@ -49,17 +49,15 @@ class Community extends Component {
 
 
   render() {
-
-    let body = this.state.feedMetadata.length > 0 ? this.state.feedMetadata[1].encoded.replace(/]]>$/, '') : null;
-
-
-
-
-
-      // let body = this.state.feedMetadata[0].encoded;
-      console.log(this.state.feedMetadata)
+    let title = this.state.feedMetadata.length > 0 ? this.state.feedMetadata[1].title.replace(/]]>$/, '').replace(/^<!\[CDATA\[/, '') : null;
+    let creator = this.state.feedMetadata.length > 0 ? this.state.feedMetadata[1].creator.replace(/]]>$/, '').replace(/^<!\[CDATA\[/, '') : null;
+    let pubDate = this.state.feedMetadata.length > 0 ? this.state.feedMetadata[1].pubDate.replace(/]]>$/, '') : null;
+    let body = this.state.feedMetadata.length > 0 ? this.state.feedMetadata[1].encoded.replace(/]]>$/, '').replace(/<\/?p[^>]*>/, 'sfasdfsadf') : null;
     return (
       <div>
+      <h1>{title}</h1>
+      <h3>{creator}</h3>
+      <p>{pubDate}</p>
         <div dangerouslySetInnerHTML={{__html:body}}/>
       </div>
     );

@@ -15,7 +15,7 @@ class Tickets extends Component {
     return (
       <Row className="mx-2">
       <Col>
-      <a href="/detail" class="custom-card">
+      <a href="/detail" className="custom-card">
       <Card className="ticketCont">
       <CardBody>
       <CardTitle className="ticketTitle">{this.props.entries.title}</CardTitle>

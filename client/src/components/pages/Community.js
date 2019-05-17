@@ -49,25 +49,14 @@ class Community extends Component {
       })
   }
 
-
   render() {
-//---------Implement multiple blog post not working
-    let blogContent = this.state.feedMetadata.map((x,id) => {
-      console.log(x.title)
-      return <Blog entries = {x} key={id} />
-  })
 
-    let title = this.state.feedMetadata.length > 0 ? this.state.feedMetadata[0].title.replace(/]]>$/, '').replace(/^<!\[CDATA\[/, '') : null;
-    let creator = this.state.feedMetadata.length > 0 ? this.state.feedMetadata[0].creator.replace(/]]>$/, '').replace(/^<!\[CDATA\[/, '') : null;
-    let pubDate = this.state.feedMetadata.length > 0 ? this.state.feedMetadata[0].pubDate.replace(/]]>$/, '') : null;
-    let body = this.state.feedMetadata.length > 0 ? this.state.feedMetadata[0].encoded.replace(/]]>$/, '') : null;
+    let blogContent = this.state.feedMetadata.map((mediumFeed,id) => {
+      return <Blog entries = {mediumFeed} key={id} />
+  })
     return (
       <div>
-      <Blog />
-      <h1>{title}</h1>
-      <h3>{creator}</h3>
-      <p>{pubDate}</p>
-        <div dangerouslySetInnerHTML={{__html:body}}/>
+      {blogContent}
       </div>
     );
   }

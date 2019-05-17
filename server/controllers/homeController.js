@@ -1,7 +1,7 @@
 const Entries = require('../models/entries');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-const cnnFeed = 'https://medium.com/feed/@alfyhushairi';
+const cnnFeed = 'https://medium.com/feed/@Medium';
 
 
 exports.getFeed = (req, res) => {

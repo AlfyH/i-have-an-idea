@@ -3,9 +3,21 @@ import '../../styles/App.scss';
 import Tickets from '../Tickets'
 import Slider from "react-slick";
 import { ParallaxBanner,ParallaxProvider} from 'react-scroll-parallax';
+import { connect } from "react-redux";
+import { submissionList } from "../../redux/actions/index";
+
+const mapStateToProps = state => {
+  return { remoteArticles: state.remoteArticles };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    submissionList: entries => dispatch(submissionList(entries))
+  };
+}
 
 
-class Home extends Component {
+class ConnectedHome extends Component {
   constructor(props) {
 super(props);
 this.state = {
@@ -14,22 +26,26 @@ this.state = {
 };
 }
 
+
+
 componentDidMount(){
-  fetch('/entriesget', {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-  }).then(response => response.json())
-  .then(data => {
-    this.setState({
-      entries: data
-    });
-  });
+  this.props.submissionList();
+  // fetch('/entriesget', {
+  //   method: 'GET',
+  //   headers: {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json'
+  //   },
+  // }).then(response => response.json())
+  // .then(data => {
+  //   this.setState({
+  //     entries: data
+  //   });
+  // });
 }
 
 render(){
+  console.log(this.props);
   const carouselSettings = {
      className: "center",
      centerMode: true,
@@ -46,7 +62,10 @@ render(){
      slidesToScroll: 3
     };
 
-    let dummyTickets = this.state.entries.map((x,id) => {
+    // let dummyTickets = this.state.entries.map((x,id) => {
+    //   return <Tickets entries = {x} key={id} />
+    // });
+    let dummyTickets = this.props.remoteArticles.map((x,id) => {
       return <Tickets entries = {x} key={id} />
     });
 
@@ -85,4 +104,5 @@ render(){
   );
 }
 }
+const Home = connect(mapStateToProps, mapDispatchToProps)(ConnectedHome);
 export default Home;

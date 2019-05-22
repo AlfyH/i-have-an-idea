@@ -1,7 +1,7 @@
 const Entries = require('../models/entries');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-const cnnFeed = 'https://medium.com/feed/@Medium';
+const cnnFeed = 'https://medium.com/feed/@alfyhushairi';
 
 
 exports.getFeed = (req, res) => {
@@ -18,7 +18,7 @@ exports.getFeed = (req, res) => {
   rawFile.send();
 }
 
-exports.post = (req, res) => {
+exports.DBpost = (req, res) => {
   Entries.create({
     title: req.body.title,
     description: req.body.description
@@ -29,8 +29,17 @@ exports.post = (req, res) => {
   });
 }
 
-exports.get = (req, res) => {
+exports.DBget = (req, res) => {
   Entries.find({}, function(err, docs) {
+      if (!err){
+          res.send(docs)
+          console.log(docs);
+      } else {throw err;}
+  });
+};
+
+exports.DBDetailget = (req, res) => {
+  Entries.findOne({title: req.params.id}, function(err, docs) {
       if (!err){
           res.send(docs)
           console.log(docs);

@@ -5,17 +5,11 @@ import Divider from './Divider'
 
 class Tickets extends Component {
 
-
-
-  componentDidMount(){
-
-  }
-
   render() {
     return (
       <Row className="mx-2">
       <Col>
-      <a href="/detail" className="custom-card">
+      <a href={"/detail/" + this.props.entries.title} className="custom-card">
       <Card className="ticketCont">
       <CardBody>
       <CardTitle className="ticketTitle">{this.props.entries.title}</CardTitle>

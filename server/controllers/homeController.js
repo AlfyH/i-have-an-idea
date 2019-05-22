@@ -33,16 +33,17 @@ exports.DBget = (req, res) => {
   Entries.find({}, function(err, docs) {
       if (!err){
           res.send(docs)
-          console.log(docs);
       } else {throw err;}
   });
 };
 
+
 exports.DBDetailget = (req, res) => {
-  Entries.findOne({title: req.params.id}, function(err, docs) {
+  let id = req.params.id;
+  Entries.findById(`${id}`, function(err, docs) {
       if (!err){
           res.send(docs)
-          console.log(docs);
+          console.log(req.params.id);
       } else {throw err;}
   });
 };

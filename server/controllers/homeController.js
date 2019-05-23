@@ -1,7 +1,11 @@
 const Entries = require('../models/entries');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var cloudinary = require('cloudinary');
+var cloudinaryStorage = require('multer-storage-cloudinary');
+var multer = require('multer');
+require('dotenv').config();
 
-const cnnFeed = 'https://medium.com/feed/@alfyhushairi';
+const mediumFeed = 'https://medium.com/feed/@alfyhushairi';
 
 
 exports.getMediumFeed = (req, res) => {
@@ -14,7 +18,7 @@ exports.getMediumFeed = (req, res) => {
       });
     }
   };
-  rawFile.open('GET', cnnFeed, false);
+  rawFile.open('GET', mediumFeed, false);
   rawFile.send();
 }
 
@@ -44,7 +48,6 @@ exports.getDetailPage = (req, res) => {
   Entries.findById(`${id}`, function(err, docs) {
       if (!err){
           res.send(docs)
-          console.log(req.params.id);
       } else {throw err;}
   });
 };
@@ -54,7 +57,21 @@ exports.getCategoryPage = (req, res) => {
   Entries.find({type: `${id}`}, function(err, docs) {
       if (!err){
           res.send(docs)
-          console.log(req.params.id);
       } else {throw err;}
   });
 };
+
+exports.postCloudinary = (req, res) => {
+    Entries.create({
+      title: req.body.title,
+      description: req.body.description,
+      type: req.body.type,
+      url: req.file ? req.file.secure_url : null
+    }, (err, data) => {
+      if (err) {
+        res.sendStatus(400);
+      } else {
+        res.sendStatus(200);
+      }
+    });
+}

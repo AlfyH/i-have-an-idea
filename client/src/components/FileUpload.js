@@ -18,13 +18,16 @@ class FileUpload extends React.Component {
       console.log(response.data);
     })
   }
+
   onChange(e) {
     this.setState({file:e.target.files[0]})
   }
+
   fileUpload(file){
     const url = '/upload';
     const formData = new FormData();
     formData.append('recfile',file)
+    formData.append('test', 'test1')
     const config = {
         headers: {
             'content-type': 'multipart/form-data'
@@ -42,7 +45,5 @@ class FileUpload extends React.Component {
    )
   }
 }
-
-
 
 export default FileUpload

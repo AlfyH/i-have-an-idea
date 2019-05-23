@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row,Col, Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, CardColumns} from 'reactstrap';
-import Divider from './Divider'
-
+import {  Row,Col, Card, CardText, CardBody, CardTitle, CardImg} from 'reactstrap';
 class Tickets extends Component {
 
 
@@ -15,6 +12,7 @@ class Tickets extends Component {
       <CardBody>
       <CardTitle className="ticketTitle">{this.props.entries.title}</CardTitle>
       <CardText className="ticketDescription">{this.props.entries.description}</CardText>
+      {this.props.entries.url && <CardImg className="ticketImage" top width="100%" src={this.props.entries.url} alt="thumbnail" />}
       <CardText className="ticketType">{this.props.entries.type}</CardText>
       </CardBody>
       </Card>

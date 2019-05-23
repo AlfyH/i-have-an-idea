@@ -7,10 +7,10 @@ class Explore extends Component {
     return (
   <Col>
       <Row>
-      <a href={"/category?_cat=" + "exhibition"}>exhibition</a>
+      <a href={"/category?_cat=exhibition"}>exhibition</a>
       </Row>
       <Row>
-      <a href={"/category?_cat=" + "play"}>play</a>
+      <a href={"/category?_cat=play"}>play</a>
       </Row>
   </Col>
     );

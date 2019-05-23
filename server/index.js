@@ -4,11 +4,6 @@ const routes = require('./routes/route');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
-/*image upload*/
-var cloudinary = require('cloudinary');
-var cloudinaryStorage = require('multer-storage-cloudinary');
-var multer = require('multer');
-
 require('dotenv').config();
 const app = express();
 
@@ -19,29 +14,6 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log("mongodb is connected")
-});
-
-//setting up parameters for Cloudinary storage
-var storage = cloudinaryStorage({
-  cloudinary: cloudinary,
-  folder: 'folder-name',
-  allowedFormats: ['jpg', 'png'],
-  filename: function (req, file, cb) {
-    cb(undefined, 'filename');
-  }
-});
-
-//.env for cloudinary keys
-cloudinary.config({
-  cloud_name: process.env.CLOUDNAME,
-  api_key: process.env.APIKEY,
-  api_secret: process.env.APISECRET
-});
-
-var parser = multer({ storage: storage });
-
-app.post('/upload', parser.single('recfile'), function (req, res) {
-  console.log(req.file);
 });
 
 //setting port number for production and localhost
@@ -58,7 +30,6 @@ app.use(session({
   saveUninitialized: true,
   cookie: { secure: false }
 }))
-
 
 app.use('/', routes);
 

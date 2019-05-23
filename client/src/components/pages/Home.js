@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import '../../styles/App.scss';
 import Tickets from '../Tickets'
 import Slider from "react-slick";
+import { Container, Row,Col, Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, CardColumns} from 'reactstrap';
 import { ParallaxBanner,ParallaxProvider} from 'react-scroll-parallax';
 import { connect } from "react-redux";
 import { submissionList } from "../../redux/actions/index";
@@ -43,6 +45,7 @@ componentDidMount(){
   //   });
   // });
 }
+
 
 render(){
   console.log(this.props);
@@ -93,7 +96,9 @@ render(){
       <Slider {...squareSettings} className="mb-5">
         <div><img src="https://picsum.photos/id/676/340/340" alt="placeholder"/></div><div><img src="https://picsum.photos/id/677/340/340" alt="placeholder"/></div><div><img src="https://picsum.photos/id/678/340/340" alt="placeholder"/></div><div><img src="https://picsum.photos/id/672/340/340" alt="placeholder"/></div><div><img src="https://picsum.photos/id/672/340/340" alt="placeholder"/></div>
       </Slider>
+
       {dummyTickets}
+  
       <h2 className="mt-4 ml-3">Editor's Pick</h2>
       <Slider {...carouselSettings} className="mb-5">
         <div><img src="https://picsum.photos/id/676/654/365" alt="placeholder"/></div><div><img src="https://picsum.photos/id/677/654/365" alt="placeholder"/></div><div><img src="https://picsum.photos/id/678/654/365" alt="placeholder"/></div><div><img src="https://picsum.photos/id/672/654/365" alt="placeholder"/></div><div><img src="https://picsum.photos/id/672/654/365" alt="placeholder"/></div>

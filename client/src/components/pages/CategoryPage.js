@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
+import Tickets from '../Tickets'
 
-class DetailPage extends Component {
+class CategoryPage extends Component {
 
   constructor(){
     super();
     this.state={
-      entries: {}
+      entries: [{
+        title: '',
+        description: ''
+      }]
     };
   }
 
   componentDidMount(){
 
   let params = queryString.parse(this.props.location.search)
-    fetch(`/detailget/${params._id}`, {
+
+    fetch(`/getcategory/${params._cat}`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -24,23 +29,27 @@ class DetailPage extends Component {
       this.setState({
         entries: data
       });
+
     })
 
   }
 
 
   render() {
-  
+    let params = queryString.parse(this.props.location.search)
+
+    let dummyTickets = this.state.entries.map((x,id) => {
+      return <Tickets entries = {x} key={id} />
+    });
 
     return (
       <div>
-<h1>{this.state.entries.title}</h1>
-<p>{this.state.entries.description}</p>
-
+      <h1 className="text-center my-5">{params._cat.toUpperCase()}</h1>
+      {dummyTickets}
       </div>
     );
   }
 
 }
 
-export default DetailPage;
+export default CategoryPage;

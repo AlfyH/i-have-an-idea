@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const homeController = require("../controllers/homeController");
 
-router.get('/feed', homeController.getFeed);
-router.post('/entriespost', homeController.DBpost)
-router.get('/entriesget', homeController.DBget)
-router.get('/detailget/:id', homeController.DBDetailget)
+router.get('/feed', homeController.getMediumFeed);
+router.post('/entriespost', homeController.postMongoDb)
+router.get('/entriesget', homeController.getMongoDb)
+router.get('/detailget/:id', homeController.getDetailPage)
+router.get('/getcategory/:id', homeController.getCategoryPage)
 
 module.exports = router;

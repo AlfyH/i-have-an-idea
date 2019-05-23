@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import {Row,Col}from 'reactstrap'
 
 class Explore extends Component {
 
   render() {
     return (
-      <div>Explore</div>
+  <Col>
+      <Row>
+      <a href={"/category?_cat=" + "exhibition"}>exhibition</a>
+      </Row>
+      <Row>
+      <a href={"/category?_cat=" + "play"}>play</a>
+      </Row>
+  </Col>
     );
   }
 

@@ -11,16 +11,6 @@ class Submit extends Component {
       description:'',
       type:''
     };
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      dropdownOpen: false
-    };
-  }
-
-  toggle() {
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
   }
 
   titleIdea = (e) => {
@@ -33,16 +23,16 @@ class Submit extends Component {
         this.setState({description});
       }
 
-      ideaType = (e) => {
+      typeIdea = (e) => {
             let type = e.target.value;
             this.setState({type});
-            console.log(type);
           }
 
-  onSubmit = (title,description) => {
+  onSubmit = (title,description,type) => {
     const sendData = {
         title,
-        description
+        description,
+        type
       }
 
     fetch('/entriespost', {
@@ -77,16 +67,9 @@ componentDidMount(){
         </h1>
          <p>Title: <input onChange = {(e)=>this.titleIdea(e)} type="text" name="name" /></p>
          <p>Description: <input onChange = {(e)=>this.descriptionIdea(e)} type="text" name="name" /></p>
-         <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret className="mb-5">
-          Idea Type
-        </DropdownToggle>
-        <DropdownMenu>
-          <DropdownItem>test</DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+         <p>Idea type: <input onChange = {(e)=>this.typeIdea(e)} type="text" name="name" /></p>
         <FileUpload />
-        <p><button className="mt-5" onClick ={(e)=>this.onSubmit(this.state.title,this.state.description)}>Submit Idea</button></p>
+        <p><button className="mt-5" onClick ={(e)=>this.onSubmit(this.state.title,this.state.description,this.state.type)}>Submit Idea</button></p>
       </div>
     );
   }

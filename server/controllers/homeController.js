@@ -4,7 +4,7 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const cnnFeed = 'https://medium.com/feed/@alfyhushairi';
 
 
-exports.getFeed = (req, res) => {
+exports.getMediumFeed = (req, res) => {
   const rawFile = new XMLHttpRequest();
 //retrieve and send RSS feed to front end
   rawFile.onreadystatechange = () => {
@@ -18,10 +18,11 @@ exports.getFeed = (req, res) => {
   rawFile.send();
 }
 
-exports.DBpost = (req, res) => {
+exports.postMongoDb = (req, res) => {
   Entries.create({
     title: req.body.title,
-    description: req.body.description
+    description: req.body.description,
+    type: req.body.type
   }, (err, data) => {
     if (err) {
       res.sendStatus(400);
@@ -29,7 +30,7 @@ exports.DBpost = (req, res) => {
   });
 }
 
-exports.DBget = (req, res) => {
+exports.getMongoDb = (req, res) => {
   Entries.find({}, function(err, docs) {
       if (!err){
           res.send(docs)
@@ -38,9 +39,19 @@ exports.DBget = (req, res) => {
 };
 
 
-exports.DBDetailget = (req, res) => {
+exports.getDetailPage = (req, res) => {
   let id = req.params.id;
   Entries.findById(`${id}`, function(err, docs) {
+      if (!err){
+          res.send(docs)
+          console.log(req.params.id);
+      } else {throw err;}
+  });
+};
+
+exports.getCategoryPage = (req, res) => {
+  let id = req.params.id;
+  Entries.find({type: `${id}`}, function(err, docs) {
       if (!err){
           res.send(docs)
           console.log(req.params.id);
